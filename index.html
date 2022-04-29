@@ -2,22 +2,55 @@
 layout: default
 ---
 
-{% include hero-section.html %}
+{% if site.posts.size == 0 %}
+  <h2>No post found</h2>
+{% endif %}
 
-{% include about-section.html %}
+<div class="posts">
+  {% for post in paginator.posts %}
+    <article class="post">
+      <h1>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </h1>
 
-{% include skills-section.html %}
+      <div clsss="meta">
+        <span class="date">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </span>
 
-{% include experience-section.html %}
+        <ul class="tag">
+          {% for tag in post.tags %}
+          <li>
+            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+              {{ tag }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
 
-{% include education-section.html %}
+      <div class="entry">
+        {{ post.excerpt | truncate: 200 }}
+      </div>
 
-{% include services-section.html %}
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
 
-{% include portfolio-section.html %}
-
-{% include testimonial-section.html %}
-
-{% include client-section.html %}
-
-{% include blog-section.html %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <span class="prev">
+      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
+        ← 上一页
+      </a>
+    </span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <span class="next">
+      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
+        下一页 →
+      </a>
+    </span>
+  {% endif %}
+</div>
