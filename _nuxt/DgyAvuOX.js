@@ -1,0 +1,1 @@
+import{c as s,a as t,o as a}from"./B7Gc3g0f.js";const o={class:"max-w-5xl mx-auto px-4 py-20"},n={__name:"about",setup(l){return(r,e)=>(a(),s("div",o,e[0]||(e[0]=[t("h2",{class:"text-3xl font-bold mb-6"},"关于我",-1),t("div",{class:"prose max-w-none"},[t("p",{class:"text-lg text-gray-600"}," 这里是你的个人介绍... ")],-1)])))}};export{n as default};
